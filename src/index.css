@@ -1,0 +1,89 @@
+@import "react-toastify/dist/ReactToastify.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Toast Customization */
+.Toastify__toast-container {
+  width: 320px;
+}
+
+.Toastify__toast {
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(26, 35, 50, 0.15);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 16px;
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+}
+
+.Toastify__toast--error {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+}
+
+.Toastify__toast--info {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+}
+
+.Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Map marker animation */
+.map-marker-bounce {
+  animation: marker-bounce 0.6s ease-out;
+}
+
+@keyframes marker-bounce {
+  0% { transform: translateY(-50px) scale(0); opacity: 0; }
+  50% { transform: translateY(-25px) scale(1.1); opacity: 0.8; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Property card image overlay */
+.property-card-overlay {
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.7) 100%);
+}
+
+/* Comparison panel backdrop */
+.comparison-backdrop {
+  background: rgba(26, 35, 50, 0.5);
+  backdrop-filter: blur(8px);
+}
