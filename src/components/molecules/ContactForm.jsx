@@ -32,7 +32,7 @@ const ContactForm = ({ isOpen, onClose, property }) => {
     
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
-    } else if (!/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ""))) {
+} else if (!/^[+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ""))) {
       newErrors.phone = "Please enter a valid phone number";
     }
     
