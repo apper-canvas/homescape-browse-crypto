@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import ContactForm from "@/components/molecules/ContactForm";
 import ApperIcon from "@/components/ApperIcon";
-import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
-
+import Button from "@/components/atoms/Button";
 const PropertyDetailModal = ({ property, isOpen, onClose, isFavorite, onToggleFavorite, onAddToCompare }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const [showContactForm, setShowContactForm] = useState(false);
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -198,21 +198,23 @@ const PropertyDetailModal = ({ property, isOpen, onClose, isFavorite, onToggleFa
 <Button 
                   variant="primary" 
                   className="flex-1"
-                  onClick={async () => {
-                    const { toast } = await import('react-toastify');
-                    toast.success('Contact request sent! The agent will respond within 24 hours.');
-                  }}
+                  onClick={() => setShowContactForm(true)}
                 >
                   <ApperIcon name="Phone" size={18} className="mr-2" />
                   Contact Agent
-                </Button>
+</Button>
               </div>
             </div>
           </motion.div>
+          {/* Contact Form Modal */}
+          <ContactForm 
+            isOpen={showContactForm}
+            onClose={() => setShowContactForm(false)}
+            property={property}
+          />
         </div>
       )}
     </AnimatePresence>
   );
 };
-
 export default PropertyDetailModal;

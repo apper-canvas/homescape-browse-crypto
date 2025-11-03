@@ -7,18 +7,18 @@ import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
+import ContactForm from "@/components/molecules/ContactForm";
 import PropertyService from "@/services/api/PropertyService";
 import FavoritesService from "@/services/api/FavoritesService";
-
 const PropertyDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [property, setProperty] = useState(null);
+const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const [showContactForm, setShowContactForm] = useState(false);
   const loadProperty = async () => {
     try {
       setLoading(true);
@@ -339,10 +339,7 @@ const PropertyDetailPage = () => {
 <Button 
                     variant="primary" 
                     className="w-full py-4 text-lg shadow-xl"
-                    onClick={async () => {
-                      const { toast } = await import('react-toastify');
-                      toast.success('Contact request sent! The agent will respond within 24 hours.');
-                    }}
+                    onClick={() => setShowContactForm(true)}
                   >
                     <ApperIcon name="Phone" size={20} className="mr-3" />
                     Contact Agent
@@ -366,9 +363,16 @@ const PropertyDetailPage = () => {
             </motion.div>
           </div>
         </div>
+</div>
+
+        {/* Contact Form Modal */}
+        <ContactForm 
+          isOpen={showContactForm}
+          onClose={() => setShowContactForm(false)}
+          property={property}
+        />
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 export default PropertyDetailPage;
