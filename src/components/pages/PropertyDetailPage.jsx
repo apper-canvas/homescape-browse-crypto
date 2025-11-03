@@ -336,9 +336,13 @@ const PropertyDetailPage = () => {
                     Add to Compare
                   </Button>
                   
-                  <Button 
+<Button 
                     variant="primary" 
                     className="w-full py-4 text-lg shadow-xl"
+                    onClick={async () => {
+                      const { toast } = await import('react-toastify');
+                      toast.success('Contact request sent! The agent will respond within 24 hours.');
+                    }}
                   >
                     <ApperIcon name="Phone" size={20} className="mr-3" />
                     Contact Agent

@@ -195,7 +195,14 @@ const PropertyDetailModal = ({ property, isOpen, onClose, isFavorite, onToggleFa
                   Add to Compare
                 </Button>
                 
-                <Button variant="primary" className="flex-1">
+<Button 
+                  variant="primary" 
+                  className="flex-1"
+                  onClick={async () => {
+                    const { toast } = await import('react-toastify');
+                    toast.success('Contact request sent! The agent will respond within 24 hours.');
+                  }}
+                >
                   <ApperIcon name="Phone" size={18} className="mr-2" />
                   Contact Agent
                 </Button>
